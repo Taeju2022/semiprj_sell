@@ -2,6 +2,7 @@ package kh.seller.service;
 
 import java.sql.Connection;
 
+import kh.seller.dao.SellerDao;
 import kh.seller.vo.SellerVo;
 
 public class SellerService {
@@ -9,8 +10,8 @@ public class SellerService {
 	public int login(SellerVo vo) {
 		int result = -1;
 		Connection conn = getConnection();
-		//result = new SellerDao().login(conn, vo);
-		//close(conn);
+		result = new SellerDao().login(conn, vo);
+		close(conn);
 		return result;
 	}
 }
