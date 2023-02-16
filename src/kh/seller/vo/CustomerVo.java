@@ -2,7 +2,7 @@ package kh.seller.vo;
 
 import java.sql.Date;
 
-public class customerVo {
+public class CustomerVo {
 
 /*
 			ORDER_ID VARCHAR2(20) PRIMARY KEY,

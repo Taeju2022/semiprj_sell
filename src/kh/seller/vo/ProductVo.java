@@ -1,6 +1,6 @@
 package kh.seller.vo;
 
-public class productVo {
+public class ProductVo {
 	
 	/* 필드 8개
 	PRODUCT_ID VARCHAR2(20) PRIMARY KEY,
@@ -21,7 +21,7 @@ public class productVo {
 	private String productDescription = null;
 	private String imageAddress = null;
 
-	public productVo() {}
+	public ProductVo() {}
 
 	@Override
 	public String toString() {

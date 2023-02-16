@@ -1,11 +1,11 @@
 package kh.seller.vo;
 
-public class sellerVo {
+public class SellerVo {
 	
 	private String sellerId = null;
 	private String sellerPassword = null;
 	
-	public sellerVo() {}
+	public SellerVo() {}
 
 	@Override
 	public String toString() {
