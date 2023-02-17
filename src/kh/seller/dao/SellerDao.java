@@ -1,6 +1,6 @@
-package kh.seller.dao;
 
-import kh.seller.jdbc.JDBCTemplate.*;
+package kh.seller.dao;
+import static kh.seller.jdbc.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,14 +21,21 @@ public class SellerDao {
 		ResultSet rs = null;
 		
 		try {
-
-			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  vo.getSellerId());
+			pstmt.setString(2, vo.getSellerPassword());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = new SellerVo();
+				result.setSellerId(rs.getString("sellerId"));
+				result.setSellerPassword(rs.getString("sellerPassword"));
+			}
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		} finally {
-			
-		}
-		SellerVo vo = null;
+			close(rs);
+			close(pstmt);
+		}		
 		return result;
 	}
 

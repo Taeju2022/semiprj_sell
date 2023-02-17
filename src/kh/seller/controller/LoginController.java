@@ -9,14 +9,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import kh.seller.vo.SellerVo;
 
-@WebServlet("/Login")
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public LoginController() {
     	super();
     }
-
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String sellerId = request.getParameter("sellerId");
+		String sellerPassword = request.getParameter("sellerPassword");
+		
+		SellerVo vo = new SellerVo();
+		vo.setSellerId(sellerId);
+		vo.setSellerPassword(sellerPassword);
+		
+		response.sendRedirect("");
+	}
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sellerId = request.getParameter("sellerId");
 		String sellerPassword = request.getParameter("sellerPassword");
@@ -25,8 +37,8 @@ public class LoginController extends HttpServlet {
 		vo.setSellerId(sellerId);
 		vo.setSellerPassword(sellerPassword);
 		
-		//int result = new MemberService().login(vo);
 		response.sendRedirect("");
 	}
 
+	
 }

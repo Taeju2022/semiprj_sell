@@ -12,7 +12,9 @@
 	<section>
 		<form action="login" method="post">
 		사용자 계정 : <input type="text" name="sellerId">
+		<br>
 		비밀번호 : <input type=password name="sellerPassword">
+		<br>
 		<button type="submit">confirm</button>
 		</form>
 	</section>

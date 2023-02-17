@@ -1,15 +1,14 @@
 package kh.seller.service;
-
+import static kh.seller.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
-
 import kh.seller.dao.SellerDao;
 import kh.seller.vo.SellerVo;
 
-import kh.seller.jdbc.*;
+
 
 public class SellerService {
 	//로그인
-	public int login(SellerVo vo) {
+	public SellerVo login(SellerVo vo) {
 		SellerVo result = null;
 		Connection conn = getConnection();
 		result = new SellerDao().login(conn, vo);
