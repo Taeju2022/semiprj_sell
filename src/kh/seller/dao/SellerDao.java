@@ -8,11 +8,10 @@ import java.sql.ResultSet;
 
 import kh.seller.vo.SellerVo;
 
-
-
-<<<<<<< HEAD
 public class SellerDao {
  
+	public SellerDao() {}
+	
 	public SellerVo login(Connection conn, SellerVo vo) {
 		
 		SellerVo result = null;
@@ -40,15 +39,8 @@ public class SellerDao {
 		return result;
 	}
 
-=======
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
-import static kh.seller.jdbc.JDBCTemplate.*;
-
-import kh.seller.vo.SellerVo;
-
+/*
 public class SellerDao {
 	public SellerVo login(Connection conn, SellerVo vo) {
 		
@@ -76,6 +68,6 @@ public class SellerDao {
 		
 		return result;
 	}
->>>>>>> 9e1d018465b3579185e1d9c295e88c543dc430c7
+	*/
 	
 }
