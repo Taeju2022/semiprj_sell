@@ -5,7 +5,9 @@ import static kh.seller.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
+import kh.seller.vo.ProductVo;
 import kh.seller.vo.SellerVo;
 
 public class SellerDao {
@@ -39,8 +41,38 @@ public class SellerDao {
 		return result;
 	}
 
-	public int selling(Connection conn, SellerVo vo) {
+	public int selling(Connection conn, ProductVo productVo) {
 
+		String sql = "SELECT SALE_PRICE, SALE_DATE, ORDER_NAME, ORDER_STATUS FROM SHOP_CUSTOMER "
+				+ " WHERE ORDER_STATUS = COMPLETE";
+		String sql2 = "SELECT PRODUCT_NAME WHERE PRODUCT_ID = ? "; 
+		
+		PreparedStatement pstmt = null;
+		PreparedStatement patmt2 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		try {
+			
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int salePrice = Integer.parseInt(rs.getString(1));
+				Date saleDate = formatter.parse(rs.getString(2));
+			}
+			
+			pstmt = conn.prepareStatement(sql2);
+			
+			
+		
+		} catch(Exception e) {
+			rs.close();
+			rs2.close();
+			pstmt.close();
+			pstmt2.close();
+			
+		}
+		
 		return 0;
 	}
 	

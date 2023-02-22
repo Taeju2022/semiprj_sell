@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kh.seller.service.SellerService;
+import kh.seller.vo.ProductVo;
 
-/**
- * Servlet implementation class SellingController
- */
+
 @WebServlet("/Selling")
 public class SellingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,8 +21,9 @@ public class SellingController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		ProductVo productVo = new ProductVo();
 		SellerService sservice = new SellerService();
-		sservice.selling();
+		sservice.selling(productVo);
 	}
 
 }

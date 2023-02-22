@@ -1,7 +1,9 @@
+
 package kh.seller.service;
 import static kh.seller.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 import kh.seller.dao.SellerDao;
+import kh.seller.vo.ProductVo;
 import kh.seller.vo.SellerVo;
 
 
@@ -17,10 +19,10 @@ public class SellerService {
 		return result;
 	}
 
-	public void selling(SellerVo vo) {
+	public int selling(ProductVo productVo) {
 		int result = 0;
 		Connection conn = getConnection();
-		result = new SellerDao().selling(conn, vo);
+		result = new SellerDao().selling(conn, productVo);
 		close(conn);
 		return result;
 		
