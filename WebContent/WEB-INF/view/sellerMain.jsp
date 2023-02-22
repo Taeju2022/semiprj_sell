@@ -9,8 +9,17 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 </head>
 <body>
-메인화면
-	<script>
-	</script>
+<form>
+<div>
+	<ul>
+		<li>물품등록</li>
+		<li>판매물품</li>
+		<li>주문현황</li>
+		<li>판매내역</li>
+	</ul>
+</div>
+</form>
+<script>
+</script>
 </body>
 </html>

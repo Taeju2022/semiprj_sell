@@ -36,15 +36,19 @@ public class LoginController extends HttpServlet {
 		sellerVo.setSellerId(sellerId);
 		sellerVo.setSellerPassword(sellerPassword);
 		
-		SellerVo s = sservice.loginSeller(sellerVo);
-		if(s!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("seller", s);			
+		System.out.println(sellerId +"/" +sellerPassword);
+		
+		int result = sservice.loginSeller(sellerVo);
+		
+		if(result == 1) {
+			System.out.println("로그인 성공");
+			request.getRequestDispatcher("/WEB-INF/view/sellerMain.jsp").forward(request, response);
 		} else {
 			System.out.println("로그인 실패");
+			request.getRequestDispatcher("/WEB-INF/view/sellerLogin.jsp").forward(request, response);
 		}
-		
-		response.sendRedirect("/WEB-INF/view/sellerMain.jsp");
+
+
 	}
 
 	

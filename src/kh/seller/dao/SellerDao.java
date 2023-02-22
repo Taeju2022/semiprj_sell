@@ -12,23 +12,23 @@ public class SellerDao {
  
 	public SellerDao() {}
 	
-	public SellerVo login(Connection conn, SellerVo vo) {
+	public int login(Connection conn, SellerVo vo) {
 		
-		SellerVo result = null;
-		String sql = "select SELLER_ID, SELLER_PASSWORD FROM SHOP_SELLER";
-		sql += " WHERE SELLER_ID = ? AND SELLER_PASSWORD";
+		String sql = "select COUNT(*) CNT FROM SHOP_SELLER "
+				+ " where SELLER_ID = ? AND SELLER_PASSWORD =?";
 		PreparedStatement pstmt= null;
 		ResultSet rs = null;
 		
+		int result = 0;
+		System.out.println("dao : " + vo);
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,  vo.getSellerId());
+			pstmt.setString(1, vo.getSellerId());
 			pstmt.setString(2, vo.getSellerPassword());
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
-				result = new SellerVo();
-				result.setSellerId(rs.getString("sellerId"));
-				result.setSellerPassword(rs.getString("sellerPassword"));
+				result = rs.getInt("cnt");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,35 +39,9 @@ public class SellerDao {
 		return result;
 	}
 
+	public int selling(Connection conn, SellerVo vo) {
 
-/*
-public class SellerDao {
-	public SellerVo login(Connection conn, SellerVo vo) {
-		
-		SellerVo result = null;
-		String sql = "select SELLER_ID, SELLER PASSWORD ";
-		sql +=" from SHOP_SELLER WHERE ID=? AND PASSWORD=?";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getSellerId());
-			pstmt.setString(2, vo.getSellerPassword());
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				result = new SellerVo();
-				result.setSellerId(rs.getString("sellerId"));
-			}			
-		} catch(Exception e){
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		
-		return result;
+		return 0;
 	}
-	*/
 	
 }
