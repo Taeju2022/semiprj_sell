@@ -22,7 +22,7 @@ public class SellerDao {
 		ResultSet rs = null;
 		
 		int result = 0;
-		System.out.println("dao : " + vo);
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getSellerId());
@@ -42,26 +42,42 @@ public class SellerDao {
 	}
 
 	public int selling(Connection conn, ProductVo productVo) {
-
-		String sql = "SELECT SALE_PRICE, SALE_DATE, ORDER_NAME, ORDER_STATUS FROM SHOP_CUSTOMER "
+		//order, product
+		//
+		String sql = "SELECT PRODUCT_ID, SALE_PRICE, SALE_DATE, ORDER_NAME, ORDER_STATUS FROM SHOP_CUSTOMER "
 				+ " WHERE ORDER_STATUS = COMPLETE";
 		String sql2 = "SELECT PRODUCT_NAME WHERE PRODUCT_ID = ? "; 
 		
+		//String sql = "PRODUCT_ID, S
+		
 		PreparedStatement pstmt = null;
-		PreparedStatement patmt2 = null;
 		ResultSet rs = null;
-		ResultSet rs2 = null;
-		try {
-			
-			
+		pstmt = conn.prepareStatement(sql);
+		
+		try {		
+			pstmt.setString(1, productVo.getProductName());
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int salePrice = Integer.parseInt(rs.getString(1));
-				Date saleDate = formatter.parse(rs.getString(2));
+				Date saleDate = rs.getString(2);
+				String orderName = rs.getString(3);
+				String orderStatus = rs.getString(4);	
 			}
 			
-			pstmt = conn.prepareStatement(sql2);
+		
+
+
+		
+		
+		
+		
+
+		PreparedStatement patmt2 = null;
+
+		ResultSet rs2 = null;
+
+			
 			
 			
 		
